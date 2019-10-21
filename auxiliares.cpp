@@ -54,3 +54,7 @@ bool pixelValidoEncendido(pixel p, imagen A){
     }
     return false;
 }
+
+/* Tercer Ejercicio */
+
+

@@ -10,6 +10,6 @@
 bool esMatriz(const imagen& img);
 bool vacia(const imagen& img);
 bool esBinaria(const imagen& img);
-bool existeCamino(const imagen& img, const pixel& p, const pixel& q, int k);
+bool pixelValidoEncendido(const imagen& img, const pixel& p, const pixel& q, int k);
 
 #endif //SOLUCION_AUXILIARES_H

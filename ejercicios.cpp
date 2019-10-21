@@ -11,48 +11,40 @@ bool esImagenValida(const imagen& img) {
 
 // Ejercicio 2
 
-bool sonPixelesConectados(const imagen &A, pixel p, pixel q, int k){
+bool sonPixelesConectados(const imagen &img, pixel p, pixel q, int k){
     if (p=q){
         return true;
     }
-    int numPixelA = a.size() * a[0].size(), i = 0;
-    sqPixel figura = <p>;
+    int numPixelA = img.size() * img[0].size(), i = 0;
+    sqPixel figura;
+    figura.push_back(p);
     sqPixel nuevaFigura = figura ;
     pixel tempArriba, tempAbajo, tempIzquierda, tempDerecha;
-    pixel tempAbajoIzquierda, tempAbajoDerecha, tempArribaIzaquierda, tempArribaDerecha;
-    while(numPixel > 0)
-    {
-        if(std::find(figura.begin(), figura.end(), q) != figura.end())
-        {
+    pixel tempAbajoIzquierda, tempAbajoDerecha, tempArribaIzquierda, tempArribaDerecha;
+    while(numPixelA > 0) {
+        if(std::find(figura.begin(), figura.end(), q) != figura.end()) {
             return true;
         }
-
-        i = fiugra.size()-1;
-        while (figura == nuevaFigura && i >= 0 )
-        {
-            if(k=8){
+        i = figura.size() - 1;
+        while (figura == nuevaFigura && i >= 0 ) {
+            if (k == 8) {
                 tempArribaDerecha[1] = nuevaFigura[i][1] + 1;
                 tempArribaDerecha[0] =nuevaFigura[i][0] + 1;
-                if(pixelValidoEncendido(tempArribaDerecha, A) != true)
-                {
+                if (not pixelValidoEncendido(tempArribaDerecha, A)) {
                     tempArribaDerecha[1] =nuevaFigura[i][1] - 1;
                     tempArribaDerecha[0] =nuevaFigura[i][0] - 1;
                 }
-                if(not(std::find(nuevaFigura.begin(), nuevaFigura.end(), tempArribaDerecha) != nuevaFigura.end()))
-                {
+                if (not(std::find(nuevaFigura.begin(), nuevaFigura.end(), tempArribaDerecha) != nuevaFigura.end())) {
                     nuevaFigura.push_Back(tempArribaDerecha);
                 }
 
-
                 tempArribaIzquierda[1] = nuevaFigura[i][1] + 1;
                 tempArribaIzquierda[0] =nuevaFigura[i][0] - 1;
-                if(pixelValidoEncendido(tempArribaIzquierda, A) != true)
-                {
+                if (not pixelValidoEncendido(tempArribaIzquierda, A)) {
                     tempArribaIzquierda[1] =nuevaFigura[i][1] - 1;
                     tempArribaIzquierda[0] =nuevaFigura[i][0] + 1;
                 }
-                if(not(std::find(nuevaFigura.begin(), nuevaFigura.end(), tempArribaIzquierda) != nuevaFigura.end()))
-                {
+                if(not (std::find(nuevaFigura.begin(), nuevaFigura.end(), tempArribaIzquierda) != nuevaFigura.end())) {
                     nuevaFigura.push_Back(tempArribaIzquierda);
                 }
 
