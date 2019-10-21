@@ -45,6 +45,12 @@ bool esBinaria(const imagen& img) {
 
 /* Segundo Ejercicio */
 
-bool existeCamino(const imagen& img, const pixel& p, const pixel& q, int k) {
-
+bool pixelValidoEncendido(pixel p, imagen A){
+    if(p.size() != 2){
+        return false;
+    }
+    if(p[0] < A.size() && p[0] >= 0 && p[1] >= 0 && p[1] < A[0].size() && A[p[0]][p[1]] == 1){
+        return true;
+    }
+    return false;
 }
