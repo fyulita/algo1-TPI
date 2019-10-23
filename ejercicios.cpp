@@ -35,8 +35,8 @@ float devolverPromedioAreas(const imagen &A, int k){
 // Ejercicio 4
 
 sqPixel calcularContorno(const imagen &A, int k){
-    sqPixel edges = {{}};
-	// TODO --> cuerpo de funcion
+    sqPixel edges = {};
+    edges = sonTodosLosDelContorno(A, edges, k);
     return edges;
 }
 

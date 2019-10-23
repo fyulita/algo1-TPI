@@ -213,3 +213,50 @@ float promedioAreas(const imagen &A, int k) {
     }
     return prom;
 }
+/*Cuarto ejercicio*/
+
+bool tocaConBackgroundOBorde(pixel p, imagen A, int k){
+    bool resp = false;
+    pixel arriba=p, abajo=p, izquierda=p, derecha=p;
+    arriba[1] += 1;
+    abajo[1] -= 1;
+    derecha[0] += 1;
+    izquierda[0] -= 1;
+    if(not pixelValidoEncendido(abajo, A) || not pixelValidoEncendido(arriba, A) || not pixelValidoEncendido(derecha, A) || not pixelValidoEncendido(izquierda, A)){
+        resp = true;
+    }
+    if(k==8 && resp != true) {
+        pixel abajoIzquierda = p, abajoDerecha = p, arribaIzquierda = p, arribaDerecha = p;
+        abajoIzquierda[0] -= 1;
+        abajoIzquierda[1] -= 1;
+        abajoDerecha[0] += 1;
+        abajoDerecha[1] -= 1;
+        arribaIzquierda[0] -= 1;
+        arribaIzquierda[1] += 1;
+        arribaDerecha[0] += 1;
+        arribaDerecha[1] += 1;
+        if(not pixelValidoEncendido(abajoDerecha, A) || not pixelValidoEncendido(arribaDerecha, A) || not pixelValidoEncendido(abajoIzquierda, A) || not pixelValidoEncendido(arribaIzquierda, A)){
+            resp = true;
+        }
+    }
+
+    return resp;
+}
+
+
+sqPixel sonTodosLosDelContorno(const imagen &A, sqPixel &edges, int k)
+{
+    int i = 0,j = 0;
+
+    while(i <= A.size() -1){
+        j = 0;
+        while(j <= A[0].size() - 1){
+            if(A[i][j] == 1 && (tocaConBackgroundOBorde({i,j}, A, k) )){
+                edges.push_back({i,j});
+            }
+            j++;
+        }
+        i++;
+    }
+    return edges;
+}
