@@ -1,6 +1,7 @@
 #include <cstdlib>
 #include "definiciones.h"
 #include "auxiliares.h"
+#include "ejercicios.h"
 
 using namespace std;
 
@@ -46,10 +47,7 @@ bool pixelValidoEncendido(pixel p, imagen A){
     if(p.size() != 2){
         return false;
     }
-    if(p[0] < A.size() && p[0] >= 0 && p[1] >= 0 && p[1] < A[0].size() && A[p[0]][p[1]] == 1){
-        return true;
-    }
-    return false;
+    return p[0] < A.size() && p[0] >= 0 && p[1] >= 0 && p[1] < A[0].size() && A[p[0]][p[1]] == 1;
 }
 
 bool perteneceALista(pixel p, sqPixel sq){
@@ -80,27 +78,27 @@ bool existeCamino(const imagen &A, const pixel &p, const pixel &q, int k) {
             if(k==8){
                 tempArribaDerecha[1] = nuevaFigura[i][1] + 1;
                 tempArribaDerecha[0] =nuevaFigura[i][0] + 1;
-                if(not(perteneceALista(tempArribaDerecha, nuevaFigura)) && pixelValidoEncendido(tempArribaDerecha, A) == true){
+                if(not(perteneceALista(tempArribaDerecha, nuevaFigura)) && pixelValidoEncendido(tempArribaDerecha, A)){
                     nuevaFigura.push_back(tempArribaDerecha);
                 }
 
                 tempArribaIzquierda[1] = nuevaFigura[i][1] + 1;
                 tempArribaIzquierda[0] =nuevaFigura[i][0] - 1;
-                if(not(perteneceALista(tempArribaIzquierda,nuevaFigura)) && pixelValidoEncendido(tempArribaIzquierda, A) == true)
+                if(not(perteneceALista(tempArribaIzquierda,nuevaFigura)) && pixelValidoEncendido(tempArribaIzquierda, A))
                 {
                     nuevaFigura.push_back(tempArribaIzquierda);
                 }
 
                 tempAbajoIzquierda[1] = nuevaFigura[i][1] - 1;
                 tempAbajoIzquierda[0] =nuevaFigura[i][0] - 1;
-                if(not(perteneceALista(tempAbajoIzquierda, nuevaFigura)) && pixelValidoEncendido(tempAbajoIzquierda, A) == true)
+                if(not(perteneceALista(tempAbajoIzquierda, nuevaFigura)) && pixelValidoEncendido(tempAbajoIzquierda, A))
                 {
                     nuevaFigura.push_back(tempAbajoIzquierda);
                 }
 
                 tempAbajoDerecha[1] = nuevaFigura[i][1] - 1;
                 tempAbajoDerecha[0] =nuevaFigura[i][0] + 1;
-                if(not(perteneceALista(tempAbajoDerecha, nuevaFigura)) && pixelValidoEncendido(tempAbajoDerecha, A) == true)
+                if(not(perteneceALista(tempAbajoDerecha, nuevaFigura)) && pixelValidoEncendido(tempAbajoDerecha, A))
                 {
                     nuevaFigura.push_back(tempAbajoDerecha);
                 }
@@ -117,22 +115,22 @@ bool existeCamino(const imagen &A, const pixel &p, const pixel &q, int k) {
             tempDerecha[1] = nuevaFigura[i][1];
             tempDerecha[0] = nuevaFigura[i][0] + 1;
 
-            if(not(perteneceALista(tempArriba, nuevaFigura)) && pixelValidoEncendido(tempArriba, A) == true)
+            if(not(perteneceALista(tempArriba, nuevaFigura)) && pixelValidoEncendido(tempArriba, A))
             {
                 nuevaFigura.push_back(tempArriba);
             }
 
-            if(not(perteneceALista(tempAbajo, nuevaFigura)) && pixelValidoEncendido(tempAbajo, A) == true)
+            if(not(perteneceALista(tempAbajo, nuevaFigura)) && pixelValidoEncendido(tempAbajo, A))
             {
                 nuevaFigura.push_back(tempAbajo);
             }
 
-            if(not(perteneceALista(tempDerecha, nuevaFigura)) && pixelValidoEncendido(tempDerecha, A) == true)
+            if(not(perteneceALista(tempDerecha, nuevaFigura)) && pixelValidoEncendido(tempDerecha, A))
             {
                 nuevaFigura.push_back(tempDerecha);
             }
 
-            if(not(perteneceALista(tempIzquierda, nuevaFigura)) && pixelValidoEncendido(tempIzquierda, A) == true)
+            if(not(perteneceALista(tempIzquierda, nuevaFigura)) && pixelValidoEncendido(tempIzquierda, A))
             {
                 nuevaFigura.push_back(tempIzquierda);
             }
@@ -158,31 +156,8 @@ bool imagenApagada(const imagen &A) {
     bool resp = true;
     for (int i = 0; i < A.size(); i++) {
         for (int j = 0; j < A[i].size(); j++) {
-            if (j != 0) {
+            if (A[i][j] != 0) {
                 resp = false;
-            }
-        }
-    }
-    return resp;
-}
-
-float promedioAreas(const imagen &A, int k) {
-    int prom = 0;
-    for (int i = 0; i < regiones(A, k).size(); i++) {
-        prom = prom + (regiones(A, k)[i].size() / regiones(A, k).size());
-    }
-    return prom;
-}
-
-vector<sqPixel> regiones(const imagen &A, int k) {
-    vector<sqPixel> resp;
-    pixel p(2);
-    for (int i = 0; i < A.size(); i++) {
-        for (int j = 0; j < A[i].size(); j++) {
-            p[0] = i;
-            p[1] = j;
-            if (activado(A, p) and not contenidoSqPixel(hacerRegion(A, p, k), resp)) {
-                resp.push_back(hacerRegion(A, p));
             }
         }
     }
@@ -203,10 +178,10 @@ sqPixel hacerRegion(const imagen &A, const pixel &p, int k) {
     sqPixel resp;
     pixel q(2);
     for (int i = 0; i < A.size(); i++) {
-        for (int j = 0; j < A[i].size(), j++) {
+        for (int j = 0; j < A[i].size(); j++) {
             q[0] = i;
             q[1] = j;
-            if (estanConectados(A, p, q, k)) {
+            if (existeCamino(A, p, q, k) or p == q) {
                 resp.push_back(q);
             }
         }
@@ -214,7 +189,27 @@ sqPixel hacerRegion(const imagen &A, const pixel &p, int k) {
     return resp;
 }
 
-bool activado(const imagen &A, const pixel &p) {
-    bool resp = A[p[0]][p[1]] == 1;
+vector<sqPixel> regiones(const imagen &A, int k) {
+    vector<sqPixel> resp;
+    pixel p(2);
+    for (int i = 0; i < A.size(); i++) {
+        for (int j = 0; j < A[i].size(); j++) {
+            p[0] = i;
+            p[1] = j;
+            if (pixelValidoEncendido(p, A) and not contenidoSqPixel(hacerRegion(A, p, k), resp)) {
+                resp.push_back(hacerRegion(A, p, k));
+            }
+        }
+    }
     return resp;
+}
+
+float promedioAreas(const imagen &A, int k) {
+    float prom = 0;
+    for (int i = 0; i < regiones(A, k).size(); i++) {
+        float tamanoRegion = (float)regiones(A, k)[i].size();
+        float regionesTotales = (float)regiones(A, k).size();
+        prom = prom + (tamanoRegion / regionesTotales);
+    }
+    return prom;
 }
