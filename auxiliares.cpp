@@ -43,11 +43,19 @@ bool esBinaria(const imagen &img) {
 
 /* Segundo Ejercicio */
 
-bool pixelValidoEncendido(pixel p, imagen A){
+bool activado(pixel p, imagen A) {
+    return A[p[0]][p[1]] == 1;
+}
+
+bool pixelValido(pixel p, imagen A){
     if(p.size() != 2){
         return false;
     }
-    return p[0] < A.size() && p[0] >= 0 && p[1] >= 0 && p[1] < A[0].size() && A[p[0]][p[1]] == 1;
+    return p[0] < A.size() && p[0] >= 0 && p[1] >= 0 && p[1] < A[0].size();
+}
+
+bool pixelValidoEncendido(pixel p, imagen A) {
+    return pixelValido(p, A) && activado(p, A);
 }
 
 bool perteneceALista(pixel p, sqPixel sq){
@@ -213,7 +221,7 @@ float promedioAreas(const imagen &A, int k) {
     }
     return prom;
 }
-/*Cuarto ejercicio*/
+/* Cuarto Ejercicio */
 
 bool tocaConBackgroundOBorde(pixel p, imagen A, int k){
     bool resp = false;
@@ -222,7 +230,8 @@ bool tocaConBackgroundOBorde(pixel p, imagen A, int k){
     abajo[1] -= 1;
     derecha[0] += 1;
     izquierda[0] -= 1;
-    if(not pixelValidoEncendido(abajo, A) || not pixelValidoEncendido(arriba, A) || not pixelValidoEncendido(derecha, A) || not pixelValidoEncendido(izquierda, A)){
+    if(not pixelValidoEncendido(abajo, A) || not pixelValidoEncendido(arriba, A) ||
+    not pixelValidoEncendido(derecha, A) || not pixelValidoEncendido(izquierda, A)){
         resp = true;
     }
     if(k==8 && resp != true) {
@@ -235,7 +244,8 @@ bool tocaConBackgroundOBorde(pixel p, imagen A, int k){
         arribaIzquierda[1] += 1;
         arribaDerecha[0] += 1;
         arribaDerecha[1] += 1;
-        if(not pixelValidoEncendido(abajoDerecha, A) || not pixelValidoEncendido(arribaDerecha, A) || not pixelValidoEncendido(abajoIzquierda, A) || not pixelValidoEncendido(arribaIzquierda, A)){
+        if(not pixelValidoEncendido(abajoDerecha, A) || not pixelValidoEncendido(arribaDerecha, A) ||
+        not pixelValidoEncendido(abajoIzquierda, A) || not pixelValidoEncendido(arribaIzquierda, A)){
             resp = true;
         }
     }
@@ -259,4 +269,106 @@ sqPixel sonTodosLosDelContorno(const imagen &A, sqPixel &edges, int k)
         i++;
     }
     return edges;
+}
+
+/* Quinto Ejercicio */
+
+void borrarImagen(imagen &A) {
+    for (int i = 0; i < A.size(); i++) {
+        for (int j = 0; j < A[i].size(); j++) {
+            A[i][j] = 0;
+        }
+    }
+}
+
+sqPixel pixelesActivadosDelElemEstrucCentrado(imagen &A, const imagen &B, const pixel &p) {
+    pixel q(2); // Pixel central de B
+    q[0] = (B.size() - 1) / 2;
+    q[1] = (B[0].size() - 1) / 2;
+    int diferenciaEnY = p[0] - q[0];
+    int diferenciaEnX = p[1] - q[1];
+    sqPixel resp;
+    pixel r(2);
+    for (int i = 0; i < B.size(); i++) {
+        for (int j = 0; j < B[i].size(); j++) {
+            r[0] = i + diferenciaEnY;
+            r[1] = j + diferenciaEnX;
+            if (pixelValido(r, A) and B[i][j] == 1) {
+                resp.push_back(r);
+            }
+        }
+    }
+    return resp;
+}
+
+bool seTocan(imagen &A, const imagen &B, const pixel &p) {
+    sqPixel s = pixelesActivadosDelElemEstrucCentrado(A, B, p);
+    pixel q;
+    bool resp = false;
+    for (int i = 0; i < s.size(); i++) {
+        q = s[i];
+        if (A[q[0]][q[1]] == 1) {
+            resp = true;
+        }
+    }
+    return resp;
+}
+
+bool dilata(imagen &A, const imagen &B, const pixel &p) {
+    bool resp = false;
+    if (seTocan(A, B, p)) {
+        resp = true;
+    }
+    return resp;
+}
+
+void dilatacion(imagen &A, const imagen &B) {
+    pixel p(2);
+    imagen A0 = A;
+    borrarImagen(A);
+    for (int i = 0; i <  A.size(); i++) {
+        for (int j = 0; j < A[i].size(); j++) {
+            p[0] = i;
+            p[1] = j;
+            if (dilata(A0, B, p)) {
+                A[p[0]][p[1]] = 1;
+            }
+        }
+    }
+}
+
+bool seTocanTodos(imagen &A, const imagen &B, const pixel &p) {
+    sqPixel s = pixelesActivadosDelElemEstrucCentrado(A, B, p);
+    pixel q;
+    bool resp = true;
+    for (int i = 0; i < s.size(); i++) {
+        q = s[i];
+        if (A[q[0]][q[1]] == 0) {
+            resp = false;
+        }
+    }
+    return resp;
+}
+
+bool erosiona(imagen &A, const imagen &B, pixel &p) {
+    bool resp = false;
+    if (seTocanTodos(A, B, p)) {
+        resp = true;
+    }
+    return resp;
+}
+
+void erosion(imagen &A, const imagen &B) {
+    pixel p(2);
+    imagen A0 = A;
+    borrarImagen(A);
+    for (int i = 0; i <  A.size(); i++) {
+        for (int j = 0; j < A[i].size(); j++) {
+            p[0] = i;
+            p[1] = j;
+            if (erosiona(A0, B, p)) {
+                A[p[0]][p[1]] = 1;
+            }
+        }
+    }
 }
