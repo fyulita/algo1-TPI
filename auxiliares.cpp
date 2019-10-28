@@ -372,3 +372,53 @@ void erosion(imagen &A, const imagen &B) {
         }
     }
 }
+
+/*Ejercicio 6*/
+
+void dilatacionLuegoIntereccion(imagen &A, imagen &dilatado, imagen &interseccion, imagen &B){
+    dilatacion(dilatado,B);
+    int i=0, j;
+    while(i < A.size() ){
+        j=0;
+        while(j < A.size()){
+            if(dilatado[i][j] == 1 && interseccion[i][j]==1 ){
+                A[i][j] = 1;
+            }
+            j++;
+        }
+        i++;
+    }
+    return;
+}
+
+bool dilatIntersecIguales(imagen &A, imagen &A0, imagen &dilatado, imagen &interseccion, imagen &B, int &ite ){
+    bool resp = false;
+    dilatacionLuegoIntereccion(A, dilatado, interseccion, B);
+    if(A == A0){
+        resp = true;
+        ite++;
+    }
+    ite++;
+    return resp;
+}
+
+int obtenerRegion(imagen &A,const pixel &semilla, int ite){
+    vector<int> filas(3,1);
+    vector<vector<int>> B(3, filas);
+    imagen dilatado, interseccion, A0;
+    interseccion = A;
+    borrarImagen(A);
+    A[semilla[0]][semilla[1]] = 1;
+    dilatado = A;
+    A0 = A;
+    if(A != interseccion) {
+        while (dilatIntersecIguales(A, A0, dilatado, interseccion, B, ite) == false) {
+
+            dilatado = A;
+            A0 = A;
+        }
+    } else{
+        ite++;
+    }
+    return ite;
+}

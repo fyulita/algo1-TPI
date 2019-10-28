@@ -14,5 +14,6 @@ float promedioAreas(const imagen &A, int k);
 sqPixel sonTodosLosDelContorno(const imagen &A, sqPixel &edges, int k);
 void dilatacion(imagen &A, const imagen &B);
 void erosion(imagen &A, const imagen &B);
+int obtenerRegion(imagen &A, const pixel &semilla, int ite);
 
 #endif //SOLUCION_AUXILIARES_H

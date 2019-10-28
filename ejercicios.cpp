@@ -51,7 +51,7 @@ void cerrarForma(imagen &A, const imagen &B){
 
 int obtenerRegionConectada(imagen &A, const pixel &semilla) {
 	int ite = 0;
-	// TODO --> cuerpo de funcion
+	ite = obtenerRegion(A,semilla, ite);
 	return ite;
 }
 
