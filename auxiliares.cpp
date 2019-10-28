@@ -301,7 +301,7 @@ sqPixel pixelesActivadosDelElemEstrucCentrado(imagen &A, const imagen &B, const 
     return resp;
 }
 
-bool seTocan(imagen &A, const imagen &B, const pixel &p) {
+bool dilata(imagen &A, const imagen &B, const pixel &p) {
     sqPixel s = pixelesActivadosDelElemEstrucCentrado(A, B, p);
     pixel q;
     bool resp = false;
@@ -310,14 +310,6 @@ bool seTocan(imagen &A, const imagen &B, const pixel &p) {
         if (A[q[0]][q[1]] == 1) {
             resp = true;
         }
-    }
-    return resp;
-}
-
-bool dilata(imagen &A, const imagen &B, const pixel &p) {
-    bool resp = false;
-    if (seTocan(A, B, p)) {
-        resp = true;
     }
     return resp;
 }
@@ -337,7 +329,7 @@ void dilatacion(imagen &A, const imagen &B) {
     }
 }
 
-bool seTocanTodos(imagen &A, const imagen &B, const pixel &p) {
+bool erosiona(imagen &A, const imagen &B, pixel &p) {
     sqPixel s = pixelesActivadosDelElemEstrucCentrado(A, B, p);
     pixel q;
     bool resp = true;
@@ -346,14 +338,6 @@ bool seTocanTodos(imagen &A, const imagen &B, const pixel &p) {
         if (A[q[0]][q[1]] == 0) {
             resp = false;
         }
-    }
-    return resp;
-}
-
-bool erosiona(imagen &A, const imagen &B, pixel &p) {
-    bool resp = false;
-    if (seTocanTodos(A, B, p)) {
-        resp = true;
     }
     return resp;
 }
@@ -412,7 +396,7 @@ int obtenerRegion(imagen &A,const pixel &semilla, int ite){
     dilatado = A;
     A0 = A;
     if(A != interseccion) {
-        while (dilatIntersecIguales(A, A0, dilatado, interseccion, B, ite) == false) {
+        while (!dilatIntersecIguales(A, A0, dilatado, interseccion, B, ite)) {
 
             dilatado = A;
             A0 = A;
