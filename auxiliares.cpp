@@ -76,8 +76,8 @@ bool existeCamino(const imagen &A, const pixel &p, const pixel &q, int k) {
     figura.push_back(p);
     sqPixel nuevaFigura;
     nuevaFigura.push_back(p);
-    pixel tempArriba=p, tempAbajo=p, tempIzquierda=p, tempDerecha=p;
-    pixel tempAbajoIzquierda=p, tempAbajoDerecha=p, tempArribaIzquierda=p, tempArribaDerecha=p;
+    pixel tempArriba(2), tempAbajo(2), tempIzquierda(2), tempDerecha(2);
+    pixel tempAbajoIzquierda(2), tempAbajoDerecha(2), tempArribaIzquierda(2), tempArribaDerecha(2);
     while(numPixelA > 0)
     {
         i = figura.size()-1;
@@ -380,7 +380,6 @@ bool dilatIntersecIguales(imagen &A, imagen &A0, imagen &dilatado, imagen &inter
     dilatacionLuegoIntereccion(A, dilatado, interseccion, B);
     if(A == A0){
         resp = true;
-        ite++;
     }
     ite++;
     return resp;
