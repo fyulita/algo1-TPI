@@ -8,7 +8,7 @@ using namespace std;
 /* Primer Ejercicio */
 bool esMatriz(const imagen &img) {
     bool resp = true;
-    for (int i = 0; i < img.size() - 1; i++) {
+    for (int i = 0; i < img.size(); i++) {
         int len = img[i].size();
         if (len == 0) {
             resp = false;

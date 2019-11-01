@@ -163,3 +163,11 @@ TEST(sonPixelesConectadosTest, PixelesEnCaminoLargoAdy4EstanConectadosAdy4) {
     pixel q = {0, 6};
     EXPECT_TRUE(sonPixelesConectados(img, p, q, 4));
 }
+
+TEST(sonPixelesConectadosTest, pixelesIguales) {
+    imagen A = {{0, 0},
+                {0, 0}};
+    pixel p = {0, 0};
+    pixel q = {0, 0};
+    EXPECT_TRUE(sonPixelesConectados(A, p, q, 4));
+}

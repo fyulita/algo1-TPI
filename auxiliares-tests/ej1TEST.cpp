@@ -11,6 +11,11 @@ TEST(vaciaTest, ImagenNoVacia) {
     EXPECT_FALSE(vacia(img));
 }
 
+TEST(esMatrizTest, ImagenVacia) {
+    imagen img = {{}};
+    EXPECT_FALSE(esMatriz(img));
+}
+
 TEST(esMatrizTest, ImagenCuadrada) {
     imagen img = {{0, 1, 0},
                   {1, 1, 1},
