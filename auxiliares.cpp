@@ -24,7 +24,7 @@ bool esMatriz(const imagen &img) {
 }
 
 bool vacia(const imagen &img) {
-    bool resp = img.size() == 1 and img[0].size() == 0;
+    bool resp = (img.size() == 1 and img[0].size() == 0) or img.size() == 0;
     return resp;
 }
 
@@ -72,87 +72,91 @@ bool perteneceALista(pixel p, sqPixel sq){
 bool existeCamino(const imagen &A, const pixel &p, const pixel &q, int k) {
     bool resp;
     int numPixelA = A.size() * A[0].size(), i = 0;
-    sqPixel figura(0) ;
-    figura.push_back(p);
-    sqPixel nuevaFigura;
-    nuevaFigura.push_back(p);
-    pixel tempArriba(2), tempAbajo(2), tempIzquierda(2), tempDerecha(2);
-    pixel tempAbajoIzquierda(2), tempAbajoDerecha(2), tempArribaIzquierda(2), tempArribaDerecha(2);
-    while(numPixelA > 0)
-    {
-        i = figura.size()-1;
-        while (figura == nuevaFigura && i >= 0 )
+    if (not pixelValidoEncendido(p, A) or not pixelValidoEncendido(q, A)) {
+        resp = false;
+    } else {
+        sqPixel figura(0) ;
+        figura.push_back(p);
+        sqPixel nuevaFigura;
+        nuevaFigura.push_back(p);
+        pixel tempArriba(2), tempAbajo(2), tempIzquierda(2), tempDerecha(2);
+        pixel tempAbajoIzquierda(2), tempAbajoDerecha(2), tempArribaIzquierda(2), tempArribaDerecha(2);
+        while(numPixelA > 0)
         {
-            if(k==8){
-                tempArribaDerecha[1] = nuevaFigura[i][1] + 1;
-                tempArribaDerecha[0] =nuevaFigura[i][0] + 1;
-                if(not(perteneceALista(tempArribaDerecha, nuevaFigura)) && pixelValidoEncendido(tempArribaDerecha, A)){
-                    nuevaFigura.push_back(tempArribaDerecha);
-                }
+            i = figura.size()-1;
+            while (figura == nuevaFigura && i >= 0 )
+            {
+                if(k==8){
+                    tempArribaDerecha[1] = nuevaFigura[i][1] + 1;
+                    tempArribaDerecha[0] =nuevaFigura[i][0] + 1;
+                    if(not(perteneceALista(tempArribaDerecha, nuevaFigura)) && pixelValidoEncendido(tempArribaDerecha, A)){
+                        nuevaFigura.push_back(tempArribaDerecha);
+                    }
 
-                tempArribaIzquierda[1] = nuevaFigura[i][1] + 1;
-                tempArribaIzquierda[0] =nuevaFigura[i][0] - 1;
-                if(not(perteneceALista(tempArribaIzquierda,nuevaFigura)) && pixelValidoEncendido(tempArribaIzquierda, A))
+                    tempArribaIzquierda[1] = nuevaFigura[i][1] + 1;
+                    tempArribaIzquierda[0] =nuevaFigura[i][0] - 1;
+                    if(not(perteneceALista(tempArribaIzquierda,nuevaFigura)) && pixelValidoEncendido(tempArribaIzquierda, A))
+                    {
+                        nuevaFigura.push_back(tempArribaIzquierda);
+                    }
+
+                    tempAbajoIzquierda[1] = nuevaFigura[i][1] - 1;
+                    tempAbajoIzquierda[0] =nuevaFigura[i][0] - 1;
+                    if(not(perteneceALista(tempAbajoIzquierda, nuevaFigura)) && pixelValidoEncendido(tempAbajoIzquierda, A))
+                    {
+                        nuevaFigura.push_back(tempAbajoIzquierda);
+                    }
+
+                    tempAbajoDerecha[1] = nuevaFigura[i][1] - 1;
+                    tempAbajoDerecha[0] =nuevaFigura[i][0] + 1;
+                    if(not(perteneceALista(tempAbajoDerecha, nuevaFigura)) && pixelValidoEncendido(tempAbajoDerecha, A))
+                    {
+                        nuevaFigura.push_back(tempAbajoDerecha);
+                    }
+                }
+                tempArriba[0] = nuevaFigura[i][0];
+                tempArriba[1] = nuevaFigura[i][1] + 1;
+
+                tempAbajo[0] = nuevaFigura[i][0];
+                tempAbajo[1] = nuevaFigura[i][1] - 1;
+
+                tempIzquierda[1] = nuevaFigura[i][1];
+                tempIzquierda[0] = nuevaFigura[i][0] - 1;
+
+                tempDerecha[1] = nuevaFigura[i][1];
+                tempDerecha[0] = nuevaFigura[i][0] + 1;
+
+                if(not(perteneceALista(tempArriba, nuevaFigura)) && pixelValidoEncendido(tempArriba, A))
                 {
-                    nuevaFigura.push_back(tempArribaIzquierda);
+                    nuevaFigura.push_back(tempArriba);
                 }
 
-                tempAbajoIzquierda[1] = nuevaFigura[i][1] - 1;
-                tempAbajoIzquierda[0] =nuevaFigura[i][0] - 1;
-                if(not(perteneceALista(tempAbajoIzquierda, nuevaFigura)) && pixelValidoEncendido(tempAbajoIzquierda, A))
+                if(not(perteneceALista(tempAbajo, nuevaFigura)) && pixelValidoEncendido(tempAbajo, A))
                 {
-                    nuevaFigura.push_back(tempAbajoIzquierda);
+                    nuevaFigura.push_back(tempAbajo);
                 }
 
-                tempAbajoDerecha[1] = nuevaFigura[i][1] - 1;
-                tempAbajoDerecha[0] =nuevaFigura[i][0] + 1;
-                if(not(perteneceALista(tempAbajoDerecha, nuevaFigura)) && pixelValidoEncendido(tempAbajoDerecha, A))
+                if(not(perteneceALista(tempDerecha, nuevaFigura)) && pixelValidoEncendido(tempDerecha, A))
                 {
-                    nuevaFigura.push_back(tempAbajoDerecha);
+                    nuevaFigura.push_back(tempDerecha);
                 }
-            }
-            tempArriba[0] = nuevaFigura[i][0];
-            tempArriba[1] = nuevaFigura[i][1] + 1;
 
-            tempAbajo[0] = nuevaFigura[i][0];
-            tempAbajo[1] = nuevaFigura[i][1] - 1;
+                if(not(perteneceALista(tempIzquierda, nuevaFigura)) && pixelValidoEncendido(tempIzquierda, A))
+                {
+                    nuevaFigura.push_back(tempIzquierda);
+                }
 
-            tempIzquierda[1] = nuevaFigura[i][1];
-            tempIzquierda[0] = nuevaFigura[i][0] - 1;
-
-            tempDerecha[1] = nuevaFigura[i][1];
-            tempDerecha[0] = nuevaFigura[i][0] + 1;
-
-            if(not(perteneceALista(tempArriba, nuevaFigura)) && pixelValidoEncendido(tempArriba, A))
-            {
-                nuevaFigura.push_back(tempArriba);
+                i--;
             }
 
-            if(not(perteneceALista(tempAbajo, nuevaFigura)) && pixelValidoEncendido(tempAbajo, A))
-            {
-                nuevaFigura.push_back(tempAbajo);
-            }
+            figura = nuevaFigura;
 
-            if(not(perteneceALista(tempDerecha, nuevaFigura)) && pixelValidoEncendido(tempDerecha, A))
-            {
-                nuevaFigura.push_back(tempDerecha);
-            }
-
-            if(not(perteneceALista(tempIzquierda, nuevaFigura)) && pixelValidoEncendido(tempIzquierda, A))
-            {
-                nuevaFigura.push_back(tempIzquierda);
-            }
-
-            i--;
+            numPixelA--;
         }
-
-        figura = nuevaFigura;
-
-        numPixelA--;
-    }
-    if(perteneceALista(q,figura))
-    {
-        resp = true;
+        if(perteneceALista(q,figura))
+        {
+            resp = true;
+        }
     }
 
     return resp;

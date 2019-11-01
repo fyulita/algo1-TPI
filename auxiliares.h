@@ -6,6 +6,7 @@
 bool esMatriz(const imagen &img);
 bool vacia(const imagen &img);
 bool esBinaria(const imagen &img);
+bool pixelValidoEncendido(pixel p, imagen A);
 bool existeCamino(const imagen &A, const pixel &p, const pixel &q, int k);
 bool imagenApagada(const imagen &A);
 bool contenidoSqPixel(const sqPixel &p, const vector<sqPixel> &S);
