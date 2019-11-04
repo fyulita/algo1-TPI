@@ -31,17 +31,17 @@
             <td class="headerValue">coverage.info</td>
             <td></td>
             <td class="headerItem">Lines:</td>
-            <td class="headerCovTableEntry">11</td>
-            <td class="headerCovTableEntry">11</td>
+            <td class="headerCovTableEntry">16</td>
+            <td class="headerCovTableEntry">16</td>
             <td class="headerCovTableEntryHi">100.0 %</td>
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2019-11-01 15:20:18</td>
+            <td class="headerValue">2019-11-04 10:10:04</td>
             <td></td>
             <td class="headerItem">Functions:</td>
-            <td class="headerCovTableEntry">10</td>
-            <td class="headerCovTableEntry">10</td>
+            <td class="headerCovTableEntry">14</td>
+            <td class="headerCovTableEntry">14</td>
             <td class="headerCovTableEntryHi">100.0 %</td>
           </tr>
           <tr><td><img src="../../glass.png" width=3 height=3 alt=""></td></tr>
@@ -63,18 +63,25 @@
 <a name="1"><span class="lineNum">       1 </span>            : #include &quot;gtest/gtest.h&quot;</a>
 <a name="2"><span class="lineNum">       2 </span>            : #include &quot;../auxiliares.h&quot;</a>
 <span class="lineNum">       3 </span>            : 
-<span class="lineNum">       4 </span><span class="lineCov">         21 : TEST(pixelValidoEncendidoTest, promedioDecimalEnAdy4_2) {</span>
-<span class="lineNum">       5 </span><span class="lineCov">          8 :     imagen A = {{1, 1, 1}, {1, 0, 0}, {0, 0, 1}};</span>
-<span class="lineNum">       6 </span><span class="lineCov">          8 :     pixel p = {1, 1};</span>
-<span class="lineNum">       7 </span><span class="lineCov">          4 :     EXPECT_FALSE(pixelValidoEncendido(p, A));</span>
-<a name="8"><span class="lineNum">       8 </span><span class="lineCov">          4 : }</span></a>
-<span class="lineNum">       9 </span>            : 
-<span class="lineNum">      10 </span><span class="lineCov">         21 : TEST(existeCaminoTest, promedioDecimalEnAdy4_2) {</span>
-<span class="lineNum">      11 </span><span class="lineCov">          8 :     imagen A = {{1, 1, 1}, {1, 0, 0}, {0, 0, 1}};</span>
-<span class="lineNum">      12 </span><span class="lineCov">          8 :     pixel p = {1, 1};</span>
-<a name="13"><span class="lineNum">      13 </span><span class="lineCov">          8 :     pixel q = {0, 0};</span></a>
-<span class="lineNum">      14 </span><span class="lineCov">          4 :     EXPECT_FALSE(existeCamino(A, p, q, 4));</span>
-<span class="lineNum">      15 </span><span class="lineCov">         19 : }</span>
+<span class="lineNum">       4 </span><span class="lineCov">          5 : TEST(pixelValido, pixelInvalido) {</span>
+<span class="lineNum">       5 </span>            :     imagen A = {{0, 0},
+<span class="lineNum">       6 </span><span class="lineCov">          2 :                 {0, 0}};</span>
+<span class="lineNum">       7 </span><span class="lineCov">          2 :     pixel p = {0, 0, 0};</span>
+<span class="lineNum">       8 </span><span class="lineCov">          1 :     EXPECT_FALSE(pixelValido(p, A));</span>
+<a name="9"><span class="lineNum">       9 </span><span class="lineCov">          1 : }</span></a>
+<span class="lineNum">      10 </span>            : 
+<span class="lineNum">      11 </span><span class="lineCov">          5 : TEST(pixelValidoEncendidoTest, promedioDecimalEnAdy4_2) {</span>
+<span class="lineNum">      12 </span><span class="lineCov">          2 :     imagen A = {{1, 1, 1}, {1, 0, 0}, {0, 0, 1}};</span>
+<span class="lineNum">      13 </span><span class="lineCov">          2 :     pixel p = {1, 1};</span>
+<span class="lineNum">      14 </span><span class="lineCov">          1 :     EXPECT_FALSE(pixelValidoEncendido(p, A));</span>
+<a name="15"><span class="lineNum">      15 </span><span class="lineCov">          1 : }</span></a>
+<span class="lineNum">      16 </span>            : 
+<span class="lineNum">      17 </span><span class="lineCov">          5 : TEST(existeCaminoTest, promedioDecimalEnAdy4_2) {</span>
+<span class="lineNum">      18 </span><span class="lineCov">          2 :     imagen A = {{1, 1, 1}, {1, 0, 0}, {0, 0, 1}};</span>
+<span class="lineNum">      19 </span><span class="lineCov">          2 :     pixel p = {1, 1};</span>
+<a name="20"><span class="lineNum">      20 </span><span class="lineCov">          2 :     pixel q = {0, 0};</span></a>
+<span class="lineNum">      21 </span><span class="lineCov">          1 :     EXPECT_FALSE(existeCamino(A, p, q, 4));</span>
+<span class="lineNum">      22 </span><span class="lineCov">          4 : }</span>
 </pre>
       </td>
     </tr>

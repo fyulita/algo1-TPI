@@ -31,13 +31,13 @@
             <td class="headerValue">coverage.info</td>
             <td></td>
             <td class="headerItem">Lines:</td>
-            <td class="headerCovTableEntry">254</td>
             <td class="headerCovTableEntry">256</td>
-            <td class="headerCovTableEntryHi">99.2 %</td>
+            <td class="headerCovTableEntry">256</td>
+            <td class="headerCovTableEntryHi">100.0 %</td>
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2019-11-01 15:20:18</td>
+            <td class="headerValue">2019-11-04 10:10:04</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">26</td>
@@ -68,21 +68,21 @@
 <span class="lineNum">       6 </span>            : using namespace std;
 <a name="7"><span class="lineNum">       7 </span>            : </a>
 <span class="lineNum">       8 </span>            : /* Primer Ejercicio */
-<span class="lineNum">       9 </span><span class="lineCov">          9 : bool esMatriz(const imagen &amp;img) {</span>
-<span class="lineNum">      10 </span><span class="lineCov">          9 :     bool resp = true;</span>
-<span class="lineNum">      11 </span><span class="lineCov">         23 :     for (int i = 0; i &lt; img.size() - 1; i++) {</span>
-<span class="lineNum">      12 </span><span class="lineCov">         14 :         int len = img[i].size();</span>
-<span class="lineNum">      13 </span><span class="lineCov">         14 :         if (len == 0) {</span>
-<span class="lineNum">      14 </span><span class="lineNoCov">          0 :             resp = false;</span>
+<span class="lineNum">       9 </span><span class="lineCov">         10 : bool esMatriz(const imagen &amp;img) {</span>
+<span class="lineNum">      10 </span><span class="lineCov">         10 :     bool resp = true;</span>
+<span class="lineNum">      11 </span><span class="lineCov">         34 :     for (int i = 0; i &lt; img.size(); i++) {</span>
+<span class="lineNum">      12 </span><span class="lineCov">         24 :         int len = img[i].size();</span>
+<span class="lineNum">      13 </span><span class="lineCov">         24 :         if (len == 0) {</span>
+<span class="lineNum">      14 </span><span class="lineCov">          1 :             resp = false;</span>
 <span class="lineNum">      15 </span>            :         } else {
-<span class="lineNum">      16 </span><span class="lineCov">         42 :             for (int j = i + 1; j &lt; img.size(); j++) {</span>
+<span class="lineNum">      16 </span><span class="lineCov">         51 :             for (int j = i + 1; j &lt; img.size(); j++) {</span>
 <span class="lineNum">      17 </span><span class="lineCov">         28 :                 if (img[j].size() != len) {</span>
 <span class="lineNum">      18 </span><span class="lineCov">          4 :                     resp = false;</span>
 <span class="lineNum">      19 </span>            :                 }
 <span class="lineNum">      20 </span>            :             }
 <span class="lineNum">      21 </span>            :         }
 <span class="lineNum">      22 </span>            :     }
-<span class="lineNum">      23 </span><span class="lineCov">          9 :     return resp;</span>
+<span class="lineNum">      23 </span><span class="lineCov">         10 :     return resp;</span>
 <a name="24"><span class="lineNum">      24 </span>            : }</a>
 <span class="lineNum">      25 </span>            : 
 <span class="lineNum">      26 </span><span class="lineCov">          7 : bool vacia(const imagen &amp;img) {</span>
@@ -109,9 +109,9 @@
 <span class="lineNum">      47 </span><span class="lineCov">     182246 :     return A[p[0]][p[1]] == 1;</span>
 <a name="48"><span class="lineNum">      48 </span>            : }</a>
 <span class="lineNum">      49 </span>            : 
-<span class="lineNum">      50 </span><span class="lineCov">     356655 : bool pixelValido(pixel p, imagen A){</span>
-<span class="lineNum">      51 </span><span class="lineCov">     356655 :     if(p.size() != 2){</span>
-<span class="lineNum">      52 </span><span class="lineNoCov">          0 :         return false;</span>
+<span class="lineNum">      50 </span><span class="lineCov">     356656 : bool pixelValido(pixel p, imagen A){</span>
+<span class="lineNum">      51 </span><span class="lineCov">     356656 :     if(p.size() != 2){</span>
+<span class="lineNum">      52 </span><span class="lineCov">          1 :         return false;</span>
 <span class="lineNum">      53 </span>            :     }
 <span class="lineNum">      54 </span><span class="lineCov">     356655 :     return p[0] &lt; A.size() &amp;&amp; p[0] &gt;= 0 &amp;&amp; p[1] &gt;= 0 &amp;&amp; p[1] &lt; A[0].size();</span>
 <a name="55"><span class="lineNum">      55 </span>            : }</a>

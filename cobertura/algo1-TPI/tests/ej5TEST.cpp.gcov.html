@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2019-11-01 15:20:18</td>
+            <td class="headerValue">2019-11-04 10:10:04</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">10</td>
@@ -65,7 +65,7 @@
 <span class="lineNum">       3 </span>            : #include &quot;../auxiliares.h&quot;
 <a name="4"><span class="lineNum">       4 </span>            : </a>
 <span class="lineNum">       5 </span>            : 
-<span class="lineNum">       6 </span><span class="lineCov">         13 : TEST(cerrarFormaTest, tapandooHuecosDeUnPixel) {</span>
+<span class="lineNum">       6 </span><span class="lineCov">          5 : TEST(cerrarFormaTest, tapandooHuecosDeUnPixel) {</span>
 <span class="lineNum">       7 </span>            :     imagen A = {
 <span class="lineNum">       8 </span>            :             {0, 0, 0, 0, 1, 0},
 <span class="lineNum">       9 </span>            :             {0, 1, 1, 0, 0, 1},
@@ -74,12 +74,12 @@
 <span class="lineNum">      12 </span>            :             {0, 1, 0, 1, 0, 0},
 <span class="lineNum">      13 </span>            :             {0, 0, 1, 0, 0, 0},
 <span class="lineNum">      14 </span>            :             {1, 1, 0, 0, 0, 1},
-<span class="lineNum">      15 </span><span class="lineCov">          4 :     };</span>
+<span class="lineNum">      15 </span><span class="lineCov">          2 :     };</span>
 <span class="lineNum">      16 </span>            :     imagen B = {
 <span class="lineNum">      17 </span>            :             {1, 1, 1},
 <span class="lineNum">      18 </span>            :             {1, 1, 1},
 <span class="lineNum">      19 </span>            :             {1, 1, 1},
-<span class="lineNum">      20 </span><span class="lineCov">          4 :     };</span>
+<span class="lineNum">      20 </span><span class="lineCov">          2 :     };</span>
 <span class="lineNum">      21 </span>            :     imagen esperada = {
 <span class="lineNum">      22 </span>            :             {1, 1, 1, 1, 1, 1},
 <span class="lineNum">      23 </span>            :             {1, 1, 1, 1, 1, 1},
@@ -88,15 +88,15 @@
 <span class="lineNum">      26 </span>            :             {1, 1, 1, 1, 0, 0},
 <span class="lineNum">      27 </span>            :             {1, 1, 1, 1, 0, 0},
 <span class="lineNum">      28 </span>            :             {1, 1, 1, 1, 1, 1},
-<span class="lineNum">      29 </span><span class="lineCov">          4 :     };</span>
+<span class="lineNum">      29 </span><span class="lineCov">          2 :     };</span>
 <span class="lineNum">      30 </span>            : 
-<span class="lineNum">      31 </span><span class="lineCov">          2 :     cerrarForma(A,B);</span>
+<span class="lineNum">      31 </span><span class="lineCov">          1 :     cerrarForma(A,B);</span>
 <span class="lineNum">      32 </span>            : 
-<span class="lineNum">      33 </span><span class="lineCov">          2 :     EXPECT_EQ(esperada, A);</span>
-<span class="lineNum">      34 </span><span class="lineCov">          2 : }</span>
+<span class="lineNum">      33 </span><span class="lineCov">          1 :     EXPECT_EQ(esperada, A);</span>
+<span class="lineNum">      34 </span><span class="lineCov">          1 : }</span>
 <a name="35"><span class="lineNum">      35 </span>            : </a>
 <span class="lineNum">      36 </span>            : 
-<span class="lineNum">      37 </span><span class="lineCov">         13 : TEST(cerrarFormaTest, cierreConCruz) {</span>
+<span class="lineNum">      37 </span><span class="lineCov">          5 : TEST(cerrarFormaTest, cierreConCruz) {</span>
 <span class="lineNum">      38 </span>            :     imagen A = {
 <span class="lineNum">      39 </span>            :         {0, 0, 0, 0, 1, 0},
 <span class="lineNum">      40 </span>            :         {0, 1, 0, 0, 0, 1},
@@ -105,12 +105,12 @@
 <span class="lineNum">      43 </span>            :         {0, 0, 0, 1, 0, 0},
 <span class="lineNum">      44 </span>            :         {0, 0, 0, 0, 0, 0},
 <span class="lineNum">      45 </span>            :         {1, 1, 0, 0, 0, 1},
-<span class="lineNum">      46 </span><span class="lineCov">          4 :     };</span>
+<span class="lineNum">      46 </span><span class="lineCov">          2 :     };</span>
 <span class="lineNum">      47 </span>            :     imagen B = {
 <span class="lineNum">      48 </span>            :             {0, 1, 0},
 <span class="lineNum">      49 </span>            :             {1, 1, 1},
 <span class="lineNum">      50 </span>            :             {0, 1, 0},
-<span class="lineNum">      51 </span><span class="lineCov">          4 :     };</span>
+<span class="lineNum">      51 </span><span class="lineCov">          2 :     };</span>
 <span class="lineNum">      52 </span>            :     imagen esperada = {
 <span class="lineNum">      53 </span>            :         { 0, 0, 0, 0, 1, 1 },
 <span class="lineNum">      54 </span>            :         { 0, 1, 0, 1, 1, 1 },
@@ -119,12 +119,12 @@
 <span class="lineNum">      57 </span>            :         { 0, 0, 0, 1, 0, 0 },
 <span class="lineNum">      58 </span>            :         { 0, 0, 0, 0, 0, 0 },
 <span class="lineNum">      59 </span>            :         { 1, 1, 0, 0, 0, 1 },
-<span class="lineNum">      60 </span><span class="lineCov">          4 :     };</span>
+<span class="lineNum">      60 </span><span class="lineCov">          2 :     };</span>
 <span class="lineNum">      61 </span>            : 
-<span class="lineNum">      62 </span><span class="lineCov">          2 :     cerrarForma(A,B);</span>
+<span class="lineNum">      62 </span><span class="lineCov">          1 :     cerrarForma(A,B);</span>
 <a name="63"><span class="lineNum">      63 </span>            : </a>
-<span class="lineNum">      64 </span><span class="lineCov">          2 :     EXPECT_EQ(esperada, A);</span>
-<span class="lineNum">      65 </span><span class="lineCov">         17 : }</span>
+<span class="lineNum">      64 </span><span class="lineCov">          1 :     EXPECT_EQ(esperada, A);</span>
+<span class="lineNum">      65 </span><span class="lineCov">          4 : }</span>
 </pre>
       </td>
     </tr>

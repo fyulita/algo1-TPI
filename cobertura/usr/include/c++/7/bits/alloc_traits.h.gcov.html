@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2019-11-01 15:20:18</td>
+            <td class="headerValue">2019-11-04 10:10:04</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">17</td>
@@ -494,8 +494,8 @@
 <span class="lineNum">     432 </span>            :        *  Calls @c a.allocate(n)
 <a name="433"><span class="lineNum">     433 </span>            :       */</a>
 <span class="lineNum">     434 </span>            :       static pointer
-<span class="lineNum">     435 </span><span class="lineCov">    6906822 :       allocate(allocator_type&amp; __a, size_type __n)</span>
-<span class="lineNum">     436 </span><span class="lineCov">    6906822 :       { return __a.allocate(__n); }</span>
+<span class="lineNum">     435 </span><span class="lineCov">    6906841 :       allocate(allocator_type&amp; __a, size_type __n)</span>
+<span class="lineNum">     436 </span><span class="lineCov">    6906841 :       { return __a.allocate(__n); }</span>
 <span class="lineNum">     437 </span>            : 
 <span class="lineNum">     438 </span>            :       /**
 <span class="lineNum">     439 </span>            :        *  @brief  Allocate memory.
@@ -520,8 +520,8 @@
 <span class="lineNum">     458 </span>            :        *  Calls &lt;tt&gt; a.deallocate(p, n) &lt;/tt&gt;
 <a name="459"><span class="lineNum">     459 </span>            :       */</a>
 <span class="lineNum">     460 </span>            :       static void
-<span class="lineNum">     461 </span><span class="lineCov">   13815528 :       deallocate(allocator_type&amp; __a, pointer __p, size_type __n)</span>
-<span class="lineNum">     462 </span><span class="lineCov">   13815528 :       { __a.deallocate(__p, __n); }</span>
+<span class="lineNum">     461 </span><span class="lineCov">    6906841 :       deallocate(allocator_type&amp; __a, pointer __p, size_type __n)</span>
+<span class="lineNum">     462 </span><span class="lineCov">    6906841 :       { __a.deallocate(__p, __n); }</span>
 <span class="lineNum">     463 </span>            : 
 <span class="lineNum">     464 </span>            :       /**
 <span class="lineNum">     465 </span>            :        *  @brief  Construct an object of type @a _Up
@@ -563,8 +563,8 @@
 <span class="lineNum">     501 </span>            :        *  @return @c __rhs
 <a name="502"><span class="lineNum">     502 </span>            :       */</a>
 <span class="lineNum">     503 </span>            :       static allocator_type
-<span class="lineNum">     504 </span><span class="lineCov">    6831064 :       select_on_container_copy_construction(const allocator_type&amp; __rhs)</span>
-<span class="lineNum">     505 </span><span class="lineCov">    6831064 :       { return __rhs; }</span>
+<span class="lineNum">     504 </span><span class="lineCov">    6831073 :       select_on_container_copy_construction(const allocator_type&amp; __rhs)</span>
+<span class="lineNum">     505 </span><span class="lineCov">    6831073 :       { return __rhs; }</span>
 <span class="lineNum">     506 </span>            :     };
 <span class="lineNum">     507 </span>            : 
 <span class="lineNum">     508 </span>            : 
@@ -594,20 +594,20 @@
 <span class="lineNum">     532 </span>            :     }
 <a name="533"><span class="lineNum">     533 </span>            : </a>
 <span class="lineNum">     534 </span>            :   template&lt;typename _Alloc&gt;
-<span class="lineNum">     535 </span><span class="lineCov">        328 :     inline void __do_alloc_on_move(_Alloc&amp; __one, _Alloc&amp; __two, true_type)</span>
-<span class="lineNum">     536 </span><span class="lineCov">        328 :     { __one = std::move(__two); }</span>
+<span class="lineNum">     535 </span><span class="lineCov">        484 :     inline void __do_alloc_on_move(_Alloc&amp; __one, _Alloc&amp; __two, true_type)</span>
+<span class="lineNum">     536 </span><span class="lineCov">        484 :     { __one = std::move(__two); }</span>
 <span class="lineNum">     537 </span>            : 
 <span class="lineNum">     538 </span>            :   template&lt;typename _Alloc&gt;
 <span class="lineNum">     539 </span>            :     inline void __do_alloc_on_move(_Alloc&amp;, _Alloc&amp;, false_type)
 <span class="lineNum">     540 </span>            :     { }
 <a name="541"><span class="lineNum">     541 </span>            : </a>
 <span class="lineNum">     542 </span>            :   template&lt;typename _Alloc&gt;
-<span class="lineNum">     543 </span><span class="lineCov">        328 :     inline void __alloc_on_move(_Alloc&amp; __one, _Alloc&amp; __two)</span>
+<span class="lineNum">     543 </span><span class="lineCov">        484 :     inline void __alloc_on_move(_Alloc&amp; __one, _Alloc&amp; __two)</span>
 <span class="lineNum">     544 </span>            :     {
 <span class="lineNum">     545 </span>            :       typedef allocator_traits&lt;_Alloc&gt; __traits;
 <span class="lineNum">     546 </span>            :       typedef typename __traits::propagate_on_container_move_assignment __pocma;
-<span class="lineNum">     547 </span><span class="lineCov">        328 :       __do_alloc_on_move(__one, __two, __pocma());</span>
-<span class="lineNum">     548 </span><span class="lineCov">        328 :     }</span>
+<span class="lineNum">     547 </span><span class="lineCov">        484 :       __do_alloc_on_move(__one, __two, __pocma());</span>
+<span class="lineNum">     548 </span><span class="lineCov">        484 :     }</span>
 <span class="lineNum">     549 </span>            : 
 <span class="lineNum">     550 </span>            :   template&lt;typename _Alloc&gt;
 <span class="lineNum">     551 </span>            :     inline void __do_alloc_on_swap(_Alloc&amp; __one, _Alloc&amp; __two, true_type)

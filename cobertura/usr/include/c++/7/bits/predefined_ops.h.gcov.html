@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2019-11-01 15:20:18</td>
+            <td class="headerValue">2019-11-04 10:10:04</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">5</td>
@@ -101,14 +101,14 @@
 <span class="lineNum">      39 </span>            :     template&lt;typename _Iterator1, typename _Iterator2&gt;
 <a name="40"><span class="lineNum">      40 </span>            :       _GLIBCXX14_CONSTEXPR</a>
 <span class="lineNum">      41 </span>            :       bool
-<span class="lineNum">      42 </span><span class="lineCov">       2176 :       operator()(_Iterator1 __it1, _Iterator2 __it2) const</span>
-<span class="lineNum">      43 </span><span class="lineCov">       2176 :       { return *__it1 &lt; *__it2; }</span>
+<span class="lineNum">      42 </span><span class="lineCov">       3264 :       operator()(_Iterator1 __it1, _Iterator2 __it2) const</span>
+<span class="lineNum">      43 </span><span class="lineCov">       3264 :       { return *__it1 &lt; *__it2; }</span>
 <span class="lineNum">      44 </span>            :   };
 <span class="lineNum">      45 </span>            : 
 <a name="46"><span class="lineNum">      46 </span>            :   _GLIBCXX14_CONSTEXPR</a>
 <span class="lineNum">      47 </span>            :   inline _Iter_less_iter
-<span class="lineNum">      48 </span><span class="lineCov">        672 :   __iter_less_iter()</span>
-<span class="lineNum">      49 </span><span class="lineCov">        672 :   { return _Iter_less_iter(); }</span>
+<span class="lineNum">      48 </span><span class="lineCov">       1008 :   __iter_less_iter()</span>
+<span class="lineNum">      49 </span><span class="lineCov">       1008 :   { return _Iter_less_iter(); }</span>
 <span class="lineNum">      50 </span>            : 
 <span class="lineNum">      51 </span>            :   struct _Iter_less_val
 <span class="lineNum">      52 </span>            :   {
@@ -148,8 +148,8 @@
 <span class="lineNum">      86 </span>            : 
 <a name="87"><span class="lineNum">      87 </span>            :     template&lt;typename _Value, typename _Iterator&gt;</a>
 <span class="lineNum">      88 </span>            :       bool
-<span class="lineNum">      89 </span><span class="lineCov">        320 :       operator()(_Value&amp; __val, _Iterator __it) const</span>
-<span class="lineNum">      90 </span><span class="lineCov">        320 :       { return __val &lt; *__it; }</span>
+<span class="lineNum">      89 </span><span class="lineCov">        480 :       operator()(_Value&amp; __val, _Iterator __it) const</span>
+<span class="lineNum">      90 </span><span class="lineCov">        480 :       { return __val &lt; *__it; }</span>
 <span class="lineNum">      91 </span>            :   };
 <span class="lineNum">      92 </span>            : 
 <span class="lineNum">      93 </span>            :   inline _Val_less_iter
@@ -157,8 +157,8 @@
 <span class="lineNum">      95 </span>            :   { return _Val_less_iter(); }
 <a name="96"><span class="lineNum">      96 </span>            : </a>
 <span class="lineNum">      97 </span>            :   inline _Val_less_iter
-<span class="lineNum">      98 </span><span class="lineCov">        320 :   __val_comp_iter(_Iter_less_iter)</span>
-<span class="lineNum">      99 </span><span class="lineCov">        320 :   { return _Val_less_iter(); }</span>
+<span class="lineNum">      98 </span><span class="lineCov">        480 :   __val_comp_iter(_Iter_less_iter)</span>
+<span class="lineNum">      99 </span><span class="lineCov">        480 :   { return _Val_less_iter(); }</span>
 <span class="lineNum">     100 </span>            : 
 <span class="lineNum">     101 </span>            :   struct _Iter_equal_to_iter
 <span class="lineNum">     102 </span>            :   {

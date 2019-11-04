@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2019-11-01 15:20:18</td>
+            <td class="headerValue">2019-11-04 10:10:04</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">18</td>
@@ -63,8 +63,8 @@
 <a name="1"><span class="lineNum">       1 </span>            : #include &quot;gtest/gtest.h&quot;</a>
 <a name="2"><span class="lineNum">       2 </span>            : #include &quot;../ejercicios.h&quot;</a>
 <span class="lineNum">       3 </span>            : 
-<span class="lineNum">       4 </span><span class="lineCov">         36 : TEST(obtenerRegionConectadaTest, imagenActivadaSoloSemillaPueboMatSalida) {</span>
-<span class="lineNum">       5 </span><span class="lineCov">          6 :     int iteraciones = -1;</span>
+<span class="lineNum">       4 </span><span class="lineCov">         46 : TEST(obtenerRegionConectadaTest, imagenActivadaSoloSemillaPueboMatSalida) {</span>
+<span class="lineNum">       5 </span><span class="lineCov">          8 :     int iteraciones = -1;</span>
 <span class="lineNum">       6 </span>            :         
 <span class="lineNum">       7 </span>            :         imagen img = {
 <span class="lineNum">       8 </span>            :         {0, 0, 0, 0, 0, 0},
@@ -74,17 +74,17 @@
 <span class="lineNum">      12 </span>            :         {0, 0, 0, 0, 0, 0},
 <span class="lineNum">      13 </span>            :         {0, 0, 0, 0, 0, 0},
 <span class="lineNum">      14 </span>            :         {0, 0, 0, 0, 0, 0},
-<span class="lineNum">      15 </span><span class="lineCov">         12 :     };</span>
-<span class="lineNum">      16 </span><span class="lineCov">         12 :     pixel semilla = {3, 2};</span>
+<span class="lineNum">      15 </span><span class="lineCov">         16 :     };</span>
+<span class="lineNum">      16 </span><span class="lineCov">         16 :     pixel semilla = {3, 2};</span>
 <span class="lineNum">      17 </span>            : 
-<span class="lineNum">      18 </span><span class="lineCov">          6 :     iteraciones = obtenerRegionConectada(img, semilla);</span>
+<span class="lineNum">      18 </span><span class="lineCov">          8 :     iteraciones = obtenerRegionConectada(img, semilla);</span>
 <span class="lineNum">      19 </span>            : 
-<span class="lineNum">      20 </span><span class="lineCov">          6 :     EXPECT_EQ(img, img);</span>
+<span class="lineNum">      20 </span><span class="lineCov">          8 :     EXPECT_EQ(img, img);</span>
 <span class="lineNum">      21 </span>            :         
-<a name="22"><span class="lineNum">      22 </span><span class="lineCov">          6 : }</span></a>
+<a name="22"><span class="lineNum">      22 </span><span class="lineCov">          8 : }</span></a>
 <span class="lineNum">      23 </span>            : 
-<span class="lineNum">      24 </span><span class="lineCov">         32 : TEST(obtenerRegionConectadaTest, imagenActivadaSoloSemillaPueboQIteraciones) {</span>
-<span class="lineNum">      25 </span><span class="lineCov">          5 :     int iteraciones = -1;</span>
+<span class="lineNum">      24 </span><span class="lineCov">         42 : TEST(obtenerRegionConectadaTest, imagenActivadaSoloSemillaPueboQIteraciones) {</span>
+<span class="lineNum">      25 </span><span class="lineCov">          7 :     int iteraciones = -1;</span>
 <span class="lineNum">      26 </span>            :         
 <span class="lineNum">      27 </span>            :         imagen img = {
 <span class="lineNum">      28 </span>            :         {0, 0, 0, 0, 0, 0},
@@ -94,16 +94,16 @@
 <span class="lineNum">      32 </span>            :         {0, 0, 0, 0, 0, 0},
 <span class="lineNum">      33 </span>            :         {0, 0, 0, 0, 0, 0},
 <span class="lineNum">      34 </span>            :         {0, 0, 0, 0, 0, 0},
-<span class="lineNum">      35 </span><span class="lineCov">         10 :     };</span>
-<span class="lineNum">      36 </span><span class="lineCov">         10 :     pixel semilla = {3, 2};</span>
+<span class="lineNum">      35 </span><span class="lineCov">         14 :     };</span>
+<span class="lineNum">      36 </span><span class="lineCov">         14 :     pixel semilla = {3, 2};</span>
 <span class="lineNum">      37 </span>            : 
-<span class="lineNum">      38 </span><span class="lineCov">          5 :     iteraciones = obtenerRegionConectada(img, semilla);</span>
+<span class="lineNum">      38 </span><span class="lineCov">          7 :     iteraciones = obtenerRegionConectada(img, semilla);</span>
 <span class="lineNum">      39 </span>            : 
-<span class="lineNum">      40 </span><span class="lineCov">          5 :     EXPECT_EQ(iteraciones, 1);  </span>
-<a name="41"><span class="lineNum">      41 </span><span class="lineCov">          5 : }</span></a>
+<span class="lineNum">      40 </span><span class="lineCov">          7 :     EXPECT_EQ(iteraciones, 1);  </span>
+<a name="41"><span class="lineNum">      41 </span><span class="lineCov">          7 : }</span></a>
 <span class="lineNum">      42 </span>            : 
-<span class="lineNum">      43 </span><span class="lineCov">         32 : TEST(obtenerRegionConectadaTest, imagenEjemploPrueboMat) {</span>
-<span class="lineNum">      44 </span><span class="lineCov">          5 :         int iteraciones = -1;</span>
+<span class="lineNum">      43 </span><span class="lineCov">         42 : TEST(obtenerRegionConectadaTest, imagenEjemploPrueboMat) {</span>
+<span class="lineNum">      44 </span><span class="lineCov">          7 :         int iteraciones = -1;</span>
 <span class="lineNum">      45 </span>            :     imagen img = {
 <span class="lineNum">      46 </span>            :         {0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
 <span class="lineNum">      47 </span>            :         {0, 1, 1, 0, 0, 0, 1, 1, 1, 0},
@@ -115,8 +115,8 @@
 <span class="lineNum">      53 </span>            :         {0, 1, 0, 0, 1, 0, 0, 0, 0, 0},
 <span class="lineNum">      54 </span>            :         {0, 0, 1, 1, 1, 0, 0, 0, 0, 0},
 <span class="lineNum">      55 </span>            :         {0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-<span class="lineNum">      56 </span><span class="lineCov">         10 :     };</span>
-<span class="lineNum">      57 </span><span class="lineCov">         10 :     pixel semilla = {6, 3};</span>
+<span class="lineNum">      56 </span><span class="lineCov">         14 :     };</span>
+<span class="lineNum">      57 </span><span class="lineCov">         14 :     pixel semilla = {6, 3};</span>
 <span class="lineNum">      58 </span>            :     imagen esperada = {
 <span class="lineNum">      59 </span>            :         {0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
 <span class="lineNum">      60 </span>            :         {0, 0, 0, 0, 0, 0, 1, 1, 1, 0},
@@ -128,15 +128,15 @@
 <span class="lineNum">      66 </span>            :         {0, 1, 0, 0, 1, 0, 0, 0, 0, 0},
 <span class="lineNum">      67 </span>            :         {0, 0, 1, 1, 1, 0, 0, 0, 0, 0},
 <span class="lineNum">      68 </span>            :         {0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-<span class="lineNum">      69 </span><span class="lineCov">         10 :     };</span>
+<span class="lineNum">      69 </span><span class="lineCov">         14 :     };</span>
 <span class="lineNum">      70 </span>            : 
-<span class="lineNum">      71 </span><span class="lineCov">          5 :     iteraciones = obtenerRegionConectada(img, semilla);</span>
+<span class="lineNum">      71 </span><span class="lineCov">          7 :     iteraciones = obtenerRegionConectada(img, semilla);</span>
 <span class="lineNum">      72 </span>            : 
-<span class="lineNum">      73 </span><span class="lineCov">          5 :     EXPECT_EQ(esperada, img);</span>
-<a name="74"><span class="lineNum">      74 </span><span class="lineCov">          5 : }</span></a>
+<span class="lineNum">      73 </span><span class="lineCov">          7 :     EXPECT_EQ(esperada, img);</span>
+<a name="74"><span class="lineNum">      74 </span><span class="lineCov">          7 : }</span></a>
 <span class="lineNum">      75 </span>            : 
-<span class="lineNum">      76 </span><span class="lineCov">         32 : TEST(obtenerRegionConectadaTest, imagenEjemploPrueboQIteraciones) {</span>
-<span class="lineNum">      77 </span><span class="lineCov">          5 :         int iteraciones = -1;</span>
+<span class="lineNum">      76 </span><span class="lineCov">         42 : TEST(obtenerRegionConectadaTest, imagenEjemploPrueboQIteraciones) {</span>
+<span class="lineNum">      77 </span><span class="lineCov">          7 :         int iteraciones = -1;</span>
 <span class="lineNum">      78 </span>            :     imagen img = {
 <span class="lineNum">      79 </span>            :         {0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
 <span class="lineNum">      80 </span>            :         {0, 1, 1, 0, 0, 0, 1, 1, 1, 0},
@@ -148,13 +148,13 @@
 <span class="lineNum">      86 </span>            :         {0, 1, 0, 0, 1, 0, 0, 0, 0, 0},
 <span class="lineNum">      87 </span>            :         {0, 0, 1, 1, 1, 0, 0, 0, 0, 0},
 <span class="lineNum">      88 </span>            :         {0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-<span class="lineNum">      89 </span><span class="lineCov">         10 :     };</span>
-<span class="lineNum">      90 </span><span class="lineCov">         10 :     pixel semilla = {6, 3};</span>
+<span class="lineNum">      89 </span><span class="lineCov">         14 :     };</span>
+<span class="lineNum">      90 </span><span class="lineCov">         14 :     pixel semilla = {6, 3};</span>
 <span class="lineNum">      91 </span>            : 
-<span class="lineNum">      92 </span><span class="lineCov">          5 :     iteraciones = obtenerRegionConectada(img, semilla);</span>
+<span class="lineNum">      92 </span><span class="lineCov">          7 :     iteraciones = obtenerRegionConectada(img, semilla);</span>
 <a name="93"><span class="lineNum">      93 </span>            : </a>
-<span class="lineNum">      94 </span><span class="lineCov">          5 :     EXPECT_EQ(6, iteraciones);</span>
-<span class="lineNum">      95 </span><span class="lineCov">         41 : }</span>
+<span class="lineNum">      94 </span><span class="lineCov">          7 :     EXPECT_EQ(6, iteraciones);</span>
+<span class="lineNum">      95 </span><span class="lineCov">         49 : }</span>
 </pre>
       </td>
     </tr>
